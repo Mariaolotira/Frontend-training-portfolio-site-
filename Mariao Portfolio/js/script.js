@@ -89,7 +89,7 @@ skills.forEach(skill => {
 const projectCarousel = document.getElementById('project-carousel');
 const projects = [
     { title: 'An NGO Website', description: 'A website for an NGO called TuLDO in Turkana', image: 'images/Screenshot 2024-07-11 201207.png', project: 'https://tuldo.org/' },
-    { title: 'Portfolio Website', description: 'A responsive portfolio website', image: 'images/Screenshot 2024-07-11 201758.png' },
+    { title: 'Portfolio Website', description: 'A responsive portfolio website', image: 'images/Screenshot 2024-07-11 201758.png', project: '#' },
     { title: 'YouTube Video Downloader', description: 'A Youtube Video Downloader using Python', image: 'images/Screenshot 2024-07-11 203019.png', project: 'Projects/YouTube Downloader/main.py' }
 ];
 
