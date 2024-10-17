@@ -89,6 +89,7 @@ skills.forEach(skill => {
 const projectCarousel = document.getElementById('project-carousel');
 const projects = [
     { title: 'An NGO Website', description: 'A website for an NGO called TuLDO in Turkana', image: 'images/Screenshot 2024-07-11 201207.png', project: 'https://tuldo.org/' },
+    { title: 'Rail Trail', description: 'A train booking and management platform', image: 'images/Rail-Trail Screenshot.png', project: 'http://rail-trail.infinityfreeapp.com/' },
     { title: 'Portfolio Website', description: 'A responsive portfolio website', image: 'images/Screenshot 2024-07-11 201758.png', project: '#' },
     { title: 'YouTube Video Downloader', description: 'A Youtube Video Downloader using Python', image: 'images/Screenshot 2024-07-11 203019.png', project: 'Projects/YouTube Downloader/main.py' }
 ];
@@ -136,14 +137,36 @@ contactForm.addEventListener('submit', function (e) {
 });
 
 function sendMail() {
-    let parms = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        subject: document.getElementById("subject").value,
-        message: document.getElementById("message").value,
+    // Get form values
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
+
+    // Check if all fields are filled
+    if (!name || !email || !subject || !message) {
+        alert('Please fill in all fields before sending your message.');
+        return; // Exit the function if any field is empty
     }
 
-    emailjs.send("service_knwjaf8", "template_sg8da1m", parms)
+    // Prepare parameters for EmailJS
+    let params = {
+        name: name,
+        email: email,
+        subject: subject,
+        message: message,
+    };
+
+    // Send email using EmailJS
+    emailjs.send("service_knwjaf8", "template_sg8da1m", params)
+        .then(() => {
+            alert('Message sent! Thank you for contacting me.');
+            document.getElementById('contact-form').reset(); // Reset the form after sending
+        })
+        .catch((error) => {
+            console.error('Error sending email:', error);
+            alert('There was an error sending your message. Please try again later.');
+        });
 }
 
 // Parallax effect for hero image
